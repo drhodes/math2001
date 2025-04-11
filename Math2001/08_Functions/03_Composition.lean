@@ -1,7 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Basic
-import Library.Tactic.Exhaust
+-- import Library.Tactic.Exhaust
 
 math2001_init
 set_option pp.funBinderTypes true
@@ -55,12 +55,12 @@ def q : Humour → Humour
   | phlegmatic => phlegmatic
   | sanguine => choleric
 
-example : Inverse p q := by
-  constructor
-  · ext x
-    cases x <;> exhaust
-  · ext x
-    cases x <;> exhaust
+-- example : Inverse p q := by
+--   constructor
+--   · ext x
+--     cases x <;> exhaust
+--   · ext x
+--     cases x <;> exhaust
 
 
 theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
@@ -136,9 +136,9 @@ def c : Humour → Humour
   | phlegmatic => sorry
   | sanguine => sorry
 
-example : b ∘ a = c := by
-  ext x
-  cases x <;> exhaust
+-- example : b ∘ a = c := by
+--   ext x
+--   cases x <;> exhaust
 
 
 def u (x : ℝ) : ℝ := 5 * x + 1

@@ -1,6 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Library.Basic
-import Library.Tactic.Exhaust
+-- import Library.Tactic.Exhaust
 
 math2001_init
 
@@ -29,22 +29,22 @@ def p (s : Set ℕ) : Set ℕ := {n : ℕ | n + 1 ∈ s}
 #check @p -- `p : Set ℕ → Set ℕ`
 
 
-example : ¬ Injective p := by
-  dsimp [Injective, p]
-  push_neg
-  use {0}, ∅
-  dsimp
-  constructor
-  · ext x
-    dsimp
-    suffices x + 1 ≠ 0 by exhaust
-    apply ne_of_gt
-    extra
-  · ext
-    push_neg
-    use 0
-    dsimp
-    exhaust
+-- example : ¬ Injective p := by
+--   dsimp [Injective, p]
+--   push_neg
+--   use {0}, ∅
+--   dsimp
+--   constructor
+--   · ext x
+--     dsimp
+--     suffices x + 1 ≠ 0 by exhaust
+--     apply ne_of_gt
+--     extra
+--   · ext
+--     push_neg
+--     use 0
+--     dsimp
+--     exhaust
 
 
 def q (s : Set ℤ) : Set ℤ := {n : ℤ | n + 1 ∈ s}

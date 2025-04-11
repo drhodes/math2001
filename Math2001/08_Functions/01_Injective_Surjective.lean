@@ -1,7 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Basic
-import Library.Tactic.Exhaust
+-- import Library.Tactic.Exhaust
 import Library.Tactic.ModEq
 import Library.Theory.ParityModular
 
@@ -83,32 +83,32 @@ def f : Musketeer → Musketeer
   | aramis => athos
 
 
-example : ¬ Injective f := by
-  dsimp [Injective]
-  push_neg
-  use athos, porthos
-  dsimp [f] -- optional
-  exhaust
+-- example : ¬ Injective f := by
+--   dsimp [Injective]
+--   push_neg
+--   use athos, porthos
+--   dsimp [f] -- optional
+--   exhaust
 
 
-example : ¬ Surjective f := by
-  dsimp [Surjective]
-  push_neg
-  use porthos
-  intro a
-  cases a
-  · exhaust
-  · exhaust
-  · exhaust
+-- example : ¬ Surjective f := by
+--   dsimp [Surjective]
+--   push_neg
+--   use porthos
+--   intro a
+--   cases a
+--   · exhaust
+--   · exhaust
+--   · exhaust
 
 
--- better (more automated) version of the previous proof
-example : ¬ Surjective f := by
-  dsimp [Surjective]
-  push_neg
-  use porthos
-  intro a
-  cases a <;> exhaust
+-- -- better (more automated) version of the previous proof
+-- example : ¬ Surjective f := by
+--   dsimp [Surjective]
+--   push_neg
+--   use porthos
+--   intro a
+--   cases a <;> exhaust
 
 
 def g : Musketeer → Musketeer
@@ -117,22 +117,22 @@ def g : Musketeer → Musketeer
   | aramis => athos
 
 
-example : Injective g := by
-  dsimp [Injective]
-  intro x1 x2 hx
-  cases x1 <;> cases x2 <;> exhaust
+-- example : Injective g := by
+--   dsimp [Injective]
+--   intro x1 x2 hx
+--   cases x1 <;> cases x2 <;> exhaust
 
 
-example : Surjective g := by
-  dsimp [Surjective]
-  intro y
-  cases y
-  · use aramis
-    exhaust
-  · use athos
-    exhaust
-  · use porthos
-    exhaust
+-- example : Surjective g := by
+--   dsimp [Surjective]
+--   intro y
+--   cases y
+--   · use aramis
+--     exhaust
+--   · use athos
+--     exhaust
+--   · use porthos
+--     exhaust
 
 
 

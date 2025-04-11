@@ -1,7 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Basic
-import Library.Tactic.Exhaust
+-- import Library.Tactic.Exhaust
 import Library.Tactic.ModEq
 
 math2001_init
@@ -142,28 +142,28 @@ open Hand
 local infix:50 " ≺ " => r
 
 
-example : ¬ Reflexive (· ≺ ·) := by
-  dsimp [Reflexive]
-  push_neg
-  use rock
-  exhaust
+-- example : ¬ Reflexive (· ≺ ·) := by
+--   dsimp [Reflexive]
+--   push_neg
+--   use rock
+--   exhaust
 
-example : ¬ Symmetric (· ≺ ·) := by
-  dsimp [Symmetric]
-  push_neg
-  use rock, paper
-  exhaust
+-- example : ¬ Symmetric (· ≺ ·) := by
+--   dsimp [Symmetric]
+--   push_neg
+--   use rock, paper
+--   exhaust
 
-example : AntiSymmetric (· ≺ ·) := by
-  dsimp [AntiSymmetric]
-  intro x y
-  cases x <;> cases y <;> exhaust
+-- example : AntiSymmetric (· ≺ ·) := by
+--   dsimp [AntiSymmetric]
+--   intro x y
+--   cases x <;> cases y <;> exhaust
 
-example : ¬ Transitive (· ≺ ·) := by
-  dsimp [Transitive]
-  push_neg
-  use rock, paper, scissors
-  exhaust
+-- example : ¬ Transitive (· ≺ ·) := by
+--   dsimp [Transitive]
+--   push_neg
+--   use rock, paper, scissors
+--   exhaust
 
 end
 

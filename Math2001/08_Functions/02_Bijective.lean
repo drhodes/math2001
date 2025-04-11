@@ -1,7 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Basic
-import Library.Tactic.Exhaust
+-- import Library.Tactic.Exhaust
 
 math2001_init
 
@@ -62,15 +62,15 @@ def f : Celestial → Subatomic
   | moon => electron
 
 
-example : ¬ Bijective f := by
-  dsimp [Bijective]
-  push_neg
-  right
-  dsimp [Surjective]
-  push_neg
-  use neutron
-  intro x
-  cases x <;> exhaust
+-- example : ¬ Bijective f := by
+--   dsimp [Bijective]
+--   push_neg
+--   right
+--   dsimp [Surjective]
+--   push_neg
+--   use neutron
+--   intro x
+--   cases x <;> exhaust
 
 
 example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
