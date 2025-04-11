@@ -16,11 +16,20 @@ macro_rules
 macro_rules
 | `(tactic| cancel_aux $a at $h) =>
   let h := h.raw.getId
-  `(tactic | replace $(mkIdent h):ident := lt_of_pow_lt_pow (n := $a) (by cancel_discharger) $(mkIdent h))
+  `(tactic | replace $(mkIdent h):ident := lt_of_pow_lt_pow_left (n := $a) (by cancel_discharger) $(mkIdent h))
 macro_rules
 | `(tactic| cancel_aux $a at $h) =>
   let h := h.raw.getId
-  `(tactic | replace $(mkIdent h):ident := le_of_pow_le_pow (n := $a) (by cancel_discharger) (by cancel_discharger) $(mkIdent h))
+  `(tactic | replace $(mkIdent h):ident := lt_of_pow_lt_pow_right (n := $a) (by cancel_discharger) $(mkIdent h))
+macro_rules
+| `(tactic| cancel_aux $a at $h) =>
+  let h := h.raw.getId
+  `(tactic | replace $(mkIdent h):ident := le_of_pow_le_pow_left (n := $a) (by cancel_discharger) (by cancel_discharger) $(mkIdent h))
+macro_rules
+| `(tactic| cancel_aux $a at $h) =>
+  let h := h.raw.getId
+  `(tactic | replace $(mkIdent h):ident := le_of_pow_le_pow_right (n := $a) (by cancel_discharger) (by cancel_discharger) $(mkIdent h))
+
 macro_rules
 | `(tactic| cancel_aux $a at $h) =>
   let h := h.raw.getId
