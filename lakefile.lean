@@ -2,12 +2,12 @@ import Lake
 open Lake DSL
 
 package math2001 where
-  moreServerArgs := #[
-    "-Dlinter.unusedVariables=false", -- ignores unused variables
-    "-DquotPrecheck=false",
-    "-DwarningAsError=false",
-    "-Dpp.unicode.fun=true"  -- pretty-prints `fun a ↦ b`
-  ]
+  -- moreServerArgs := #[
+  --   "-Dlinter.unusedVariables=false", -- ignores unused variables
+  --   "-DquotPrecheck=false",
+  --   "-DwarningAsError=false",
+  --   "-Dpp.unicode.fun=true"  -- pretty-prints `fun a ↦ b`
+  -- ]
 
 lean_lib Library
 
