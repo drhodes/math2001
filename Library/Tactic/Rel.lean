@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Heather Macbeth
 -/
 import Library.Tactic.Rel.Attr
-import Mathlib.Tactic.SolveByElim
+import Std.Tactic.SolveByElim
 import Mathlib.Tactic.GCongr.Core
 
 /-! # Extension to the `rel` tactic for the relation `↔`
@@ -22,7 +22,7 @@ only where needed.
 
 
 open Lean Elab Tactic
-open Mathlib Tactic
+open Mathlib Tactic Std.Tactic
 
 syntax (name := IffRelSyntax) "iff_rel" " [" term,* "] " : tactic
 

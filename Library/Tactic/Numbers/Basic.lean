@@ -6,7 +6,7 @@ import Mathlib.Tactic.NormNum.Eq
 import Mathlib.Tactic.NormNum.Ineq
 import Mathlib.Tactic.NormNum.Pow
 import Mathlib.Tactic.NormNum.Inv
-import Mathlib.Tactic.SolveByElim
+import Std.Tactic.SolveByElim
 
 /-! # `numbers` tactic
 
@@ -56,11 +56,11 @@ numerical expressions.
 -/
 elab (name := numbers) "numbers" : tactic =>
   Tactic.liftMetaTactic <| fun g => do
-    let cfg : Mathlib.Tactic.SolveByElim.Config :=
+    let cfg : Std.Tactic.SolveByElim.Config :=
       { maxDepth := 8, discharge := Library.Tactic.numbersDischarger, exfalso := false,
         symm := false  }
     let lemmas := Library.Tactic.numbersProdLemmas.map (liftM <| mkConstWithFreshMVarLevels ·)
-    Mathlib.Tactic.SolveByElim.solveByElim cfg lemmas (ctx := pure []) [g]
+    Std.Tactic.SolveByElim.solveByElim cfg lemmas (ctx := pure []) [g]
       <|> throwError "Numbers tactic failed. Maybe the goal is not in scope for the tactic (i.e. the goal is not a pure numeric statement), or maybe the goal is false?"
 
 elab (name := numbersCore) "numbers_core" loc:(location ?) : tactic => do

@@ -3,7 +3,7 @@ Copyright (c) 2023 Heather Macbeth. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Heather Macbeth
 -/
-import Mathlib.Tactic.SolveByElim
+import Std.Tactic.SolveByElim
 import Mathlib.Tactic.Linarith
 
 /-! # Specialized induction tactics
@@ -117,7 +117,7 @@ theorem lem2 (a : ℤ) {b : ℤ} (hb : b < 0) : abs a < abs b ↔ b < a ∧ a < 
     right
     constructor <;> linarith
 
-open Lean Meta Elab Mathlib Tactic SolveByElim
+open Lean Meta Elab Mathlib Tactic Std.Tactic
 
 register_label_attr decreasing
 
@@ -126,7 +126,7 @@ syntax "apply_decreasing_rules" : tactic
 elab_rules : tactic |
     `(tactic| apply_decreasing_rules)  => do
   let cfg : SolveByElim.Config := { backtracking := false }
-  liftMetaTactic fun g => solveByElim.processSyntax cfg false false [] [] #[mkIdent `decreasing] [g]
+  liftMetaTactic fun g => SolveByElim.solveByElim.processSyntax cfg false false [] [] #[mkIdent `decreasing] [g]
 
 macro_rules
 | `(tactic| decreasing_tactic) =>
