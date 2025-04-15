@@ -30,8 +30,9 @@ but currently only Lean core options can be set in lakefile
 -- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"9d6b50d77c4"
 -- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"565cdcb266f"
 -- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"e23b08714da"
-require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"b6d00f332a4"
+-- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"b6d00f332a4"
 
+require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"9a07518812f"
 
 
 
