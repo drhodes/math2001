@@ -31,8 +31,18 @@ but currently only Lean core options can be set in lakefile
 -- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"565cdcb266f"
 -- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"e23b08714da"
 -- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"b6d00f332a4"
+-- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"9a07518812f"
+-- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"bd6616c746d"
+-- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"132e5112a46"
+-- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"7458f0e73e0"
+-- ok require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"132e5112a46"
 
-require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"9a07518812f"
+require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"d3a6c9f3bd1" -- broken
+
+-- require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"15e555e7342"
+-- require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"4fcf5bdedea"
+-- require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"b97737518d5"
+-- require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"feec58a7ee9"
 
 
 
