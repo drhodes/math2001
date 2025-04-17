@@ -29,11 +29,11 @@ open Lean Meta Elab
 open Parser.Tactic Mathlib.Meta.NormNum
 
 def Library.Tactic.numbersDischarger (g : MVarId): MetaM (Option (List MVarId)) :=
-  Term.TermElabM.run' do
-  match ← Tactic.run g <|
-    elabNormNum mkNullNode Syntax.missing (simpOnly := true) (useSimp := false) with
-  | [] => pure (some [])
-  | _ => failure
+    Term.TermElabM.run' do
+    match ← Tactic.run g <|
+      elabNormNum mkNullNode Syntax.missing (simpOnly := true) (useSimp := false) with
+    | [] => pure (some [])
+    | _ => failure;
 
 theorem Prod.ne_left {a1 a2 : A} {b1 b2 : B} : a1 ≠ a2 → (a1, b1) ≠ (a2, b2) := mt <| by
   rw [Prod.mk.inj_iff]
@@ -46,9 +46,18 @@ theorem Prod.ne_right {a1 a2 : A} {b1 b2 : B} : b1 ≠ b2 → (a1, b1) ≠ (a2, 
 theorem Prod.ext' {a1 a2 : A} {b1 b2 : B} (h1 : a1 = a2) (h2 : b1 = b2) : (a1, b1) = (a2, b2) :=
   Prod.ext h1 h2
 
-def Library.Tactic.numbersProdLemmas : List Name := [``Prod.ne_left, ``Prod.ne_right, ``Prod.ext']
+def Library.Tactic.numbersProdLemmas : List Name := [
+    ``Prod.ne_left,
+    ``Prod.ne_right,
+    ``Prod.ext',
+    ``Eq.refl,
+    ``isNat_eq_false,
+    ``isRat_eq_false,
+  ]
 
 /--
+from Mathlib/Tactic/NormNum/Core.lean
+
 Normalize numerical expressions. Supports the operations `+` `-` `*` `/` `⁻¹` and `^`
 over numerical types such as `ℕ`, `ℤ`, `ℚ`, `ℝ`, `ℂ` and some general algebraic types,
 and can prove goals of the form `A = B`, `A ≠ B`, `A < B` and `A ≤ B`, where `A` and `B` are
