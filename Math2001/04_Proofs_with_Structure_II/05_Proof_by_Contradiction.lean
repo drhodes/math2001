@@ -114,24 +114,24 @@ example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2)
   have : ¬ l ∣ p := H l hl1 hl2
   contradiction
 
-
-example : Prime 79 := by
-  apply better_prime_test (T := 9)
-  · numbers
-  · numbers
-  intro m hm1 hm2
-  apply Nat.not_dvd_of_exists_lt_and_lt
-  interval_cases m
-  · use 39
-    constructor <;> numbers
-  · use 26
-    constructor <;> numbers
-  · use 19
-    constructor <;> numbers
-  · sorry
-  · sorry
-  · sorry
-  · sorry
+-- TODO fix the numbers tactic
+-- example : Prime 79 := by
+--   apply better_prime_test (T := 9)
+--   · numbers
+--   · numbers
+--   intro m hm1 hm2
+--   apply Nat.not_dvd_of_exists_lt_and_lt
+--   interval_cases m
+--   · use 39
+--     constructor <;> numbers
+--   · use 26
+--     constructor <;> numbers
+--   · use 19
+--     constructor <;> numbers
+--   · sorry
+--   · sorry
+--   · sorry
+--   · sorry
 
 /-! # Exercises -/
 

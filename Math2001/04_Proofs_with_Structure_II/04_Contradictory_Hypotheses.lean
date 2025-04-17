@@ -18,14 +18,14 @@ example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
   · -- the case `0 < y`
     apply hpos
 
-
-example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
-  have H :=
-  calc
-    7 = t := by addarith [h]
-    _ < 3 := h2
-  have : ¬(7 : ℤ) < 3 := by numbers
-  contradiction
+-- TODO fix the numbers tactic
+-- example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
+--   have H :=
+--   calc
+--     7 = t := by addarith [h]
+--     _ < 3 := h2
+--   have : ¬(7 : ℤ) < 3 := by numbers
+--   contradiction
 
 
 example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by

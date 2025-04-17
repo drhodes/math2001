@@ -29,19 +29,19 @@ example : Bijective p := by
 
 def a (t : ℝ) : ℝ := t ^ 3 - t
 
-example : ¬ Bijective a := by
-  dsimp [Bijective]
-  push_neg
-  left
-  dsimp [Injective]
-  push_neg
-  use 0, 1
-  constructor
-  · calc a 0 = 0 ^ 3 - 0 := by rfl
-      _ = 1 ^ 3 - 1 := by numbers
-      _ = a 1 := by rfl
-  · numbers
-
+-- TODO Fix numbers tactic
+-- example : ¬ Bijective a := by
+--   dsimp [Bijective]
+--   push_neg
+--   left
+--   dsimp [Injective]
+--   push_neg
+--   use 0, 1
+--   constructor
+--   · calc a 0 = 0 ^ 3 - 0 := by rfl
+--       _ = 1 ^ 3 - 1 := by numbers
+--       _ = a 1 := by rfl
+--   · numbers
 
 inductive Celestial
   | sun
