@@ -9,7 +9,7 @@ open Int
   linarith
 
 @[decreasing] theorem lower_bound_fmod2 (a b : ℤ) (h1 : b < 0) : b < fmod a (-b) := by
-  have H : 0 ≤ fmod a (-b) 
+  have H : 0 ≤ fmod a (-b)
   · apply fmod_nonneg_of_pos
     linarith
   linarith
@@ -29,7 +29,7 @@ def gcd (a b : ℤ) : ℤ :=
     a
   else
     -a
-termination_by _ a b => b
+termination_by b
 
 theorem gcd_nonneg (a b : ℤ) : 0 ≤ _root_.gcd a b := by
   rw [_root_.gcd]
@@ -38,7 +38,7 @@ theorem gcd_nonneg (a b : ℤ) : 0 ≤ _root_.gcd a b := by
   · apply gcd_nonneg
   · apply ha
   · linarith
-termination_by _ a b => b
+
 
 mutual
 theorem gcd_dvd_right (a b : ℤ) : _root_.gcd a b ∣ b := by
@@ -50,7 +50,7 @@ theorem gcd_dvd_right (a b : ℤ) : _root_.gcd a b ∣ b := by
     linarith
   · use 0
     linarith
-    
+
 theorem gcd_dvd_left (a b : ℤ) : _root_.gcd a b ∣ a := by
   rw [_root_.gcd]
   split_ifs with h1 h2
@@ -70,7 +70,7 @@ theorem gcd_dvd_left (a b : ℤ) : _root_.gcd a b ∣ a := by
     ring
 
 end
-termination_by gcd_dvd_right a b => b ; gcd_dvd_left a b => b
+
 
 namespace Bezout
 mutual
@@ -79,8 +79,8 @@ def L (a b : ℤ) : ℤ :=
   if 0 < b then
     R b (fmod a b)
   else if b < 0 then
-    R b (fmod a (-b)) 
-  else if 0 ≤ a then 
+    R b (fmod a (-b))
+  else if 0 ≤ a then
     1
   else
     -1
@@ -94,7 +94,7 @@ def R (a b : ℤ) : ℤ :=
     0
 
 end
-termination_by L a b => b ; R a b => b
+
 
 theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = _root_.gcd a b := by
   rw [R, L, _root_.gcd]
@@ -107,9 +107,9 @@ theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = _root_.gcd a b := 
     linear_combination IH - R b (fmod a (-b)) * h
   · ring
   · ring
-termination_by L_mul_add_R_mul a b => b
+
 
 end Bezout
 open Bezout
 
-theorem bezout (a b : ℤ) : ∃ x y : ℤ, x * a + y * b = _root_.gcd a b := ⟨_, _, L_mul_add_R_mul _ _⟩ 
+theorem bezout (a b : ℤ) : ∃ x y : ℤ, x * a + y * b = _root_.gcd a b := ⟨_, _, L_mul_add_R_mul _ _⟩

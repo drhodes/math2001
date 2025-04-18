@@ -7,16 +7,16 @@ math2001_init
 
 namespace Nat
 
-
-example (n : ℕ) : 2 ^ n ≥ n + 1 := by
-  simple_induction n with k IH
-  · -- base case
-    numbers
-  · -- inductive step
-    calc 2 ^ (k + 1) = 2 * 2 ^ k := by ring
-      _ ≥ 2 * (k + 1) := by rel [IH]
-      _ = (k + 1 + 1) + k := by ring
-      _ ≥ k + 1 + 1 := by extra
+-- TODO: fix numbers tactic
+-- example (n : ℕ) : 2 ^ n ≥ n + 1 := by
+--   simple_induction n with k IH
+--   · -- base case
+--     numbers
+--   · -- inductive step
+--     calc 2 ^ (k + 1) = 2 * 2 ^ k := by ring
+--       _ ≥ 2 * (k + 1) := by rel [IH]
+--       _ = (k + 1 + 1) + k := by ring
+--       _ ≥ k + 1 + 1 := by extra
 
 
 example (n : ℕ) : Even n ∨ Odd n := by
@@ -48,23 +48,26 @@ example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 15] ∨ 4 ^ n ≡ 4 [ZMOD 15] := by
         _ = 15 * 1 + 1 := by numbers
         _ ≡ 1 [ZMOD 15] := by extra
 
+-- TODO: fix numbers tactic
+-- example {n : ℕ} (hn : 2 ≤ n) : (3:ℤ) ^ n ≥ 2 ^ n + 5 := by
+--   induction_from_starting_point n, hn with k hk IH
+--   · -- base case
+--     numbers
+--   · -- inductive step
+--     calc (3:ℤ) ^ (k + 1) = 2 * 3 ^ k + 3 ^ k := by ring
+--       _ ≥ 2 * (2 ^ k + 5) + 3 ^ k := by rel [IH]
+--       _ = 2 ^ (k + 1) + 5 + (5 + 3 ^ k) := by ring
+--       _ ≥ 2 ^ (k + 1) + 5 := by extra
 
-example {n : ℕ} (hn : 2 ≤ n) : (3:ℤ) ^ n ≥ 2 ^ n + 5 := by
-  induction_from_starting_point n, hn with k hk IH
-  · -- base case
-    numbers
-  · -- inductive step
-    calc (3:ℤ) ^ (k + 1) = 2 * 3 ^ k + 3 ^ k := by ring
-      _ ≥ 2 * (2 ^ k + 5) + 3 ^ k := by rel [IH]
-      _ = 2 ^ (k + 1) + 5 + (5 + 3 ^ k) := by ring
-      _ ≥ 2 ^ (k + 1) + 5 := by extra
 
-
+-- TODO fix induction_from_starting_point.
+-- induction' will solve this now.
 example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 2 := by
   dsimp
   use 4
   intro n hn
-  induction_from_starting_point n, hn with k hk IH
+  -- induction' induction_from_starting_point n, hn with k hk IH
+  induction' hn with k hk IH
   · -- base case
     sorry
   · -- inductive step

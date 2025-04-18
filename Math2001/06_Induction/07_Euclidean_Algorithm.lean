@@ -39,7 +39,7 @@ def gcd (a b : ℤ) : ℤ :=
     a
   else
     -a
-termination_by _ a b => b
+termination_by b
 
 
 #eval gcd (-21) 15 -- infoview displays `3`
@@ -58,7 +58,7 @@ theorem gcd_nonneg (a b : ℤ) : 0 ≤ gcd a b := by
     apply ha
   · -- case `b = 0`, `a < 0`
     addarith [ha]
-termination_by _ a b => b
+termination_by b
 
 
 theorem gcd_dvd (a b : ℤ) : gcd a b ∣ b ∧ gcd a b ∣ a := by
@@ -92,7 +92,7 @@ theorem gcd_dvd (a b : ℤ) : gcd a b ∣ b ∧ gcd a b ∣ a := by
       sorry
     · -- prove that `gcd a b ∣ a`
       sorry
-termination_by gcd_dvd a b => b
+-- termination_by gcd_dvd a b => b
 
 
 mutual
@@ -149,7 +149,7 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
     ring
 
 end
-termination_by gcd_dvd_right a b => b ; gcd_dvd_left a b => b
+-- termination_by gcd_dvd_right a b => b ; gcd_dvd_left a b => b
 
 
 mutual
@@ -173,7 +173,7 @@ def R (a b : ℤ) : ℤ :=
     0
 
 end
-termination_by L a b => b ; R a b => b
+-- termination_by L a b => b ; R a b => b
 
 
 #eval L (-21) 15 -- infoview displays `2`
@@ -205,7 +205,7 @@ theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
     ring
   · -- case `b = 0`, `a < 0`
     ring
-termination_by L_mul_add_R_mul a b => b
+-- termination_by L_mul_add_R_mul a b => b
 
 
 #eval L 7 5 -- infoview displays `-2`
