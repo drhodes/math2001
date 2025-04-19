@@ -144,10 +144,10 @@ example : 8 ∈ {k : ℤ | 5 ∣ k} := by
 example : 8 ∉ {k : ℤ | 5 ∣ k} := by
   sorry
 
-example : 11 ∈ {n : ℕ | Odd n} := by
+example : 11 ∈ {n : ℕ | Nat.Odd n} := by
   sorry
 
-example : 11 ∉ {n : ℕ | Odd n} := by
+example : 11 ∉ {n : ℕ | Nat.Odd n} := by
   sorry
 
 
