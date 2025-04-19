@@ -3,7 +3,7 @@ Copyright (c) 2023 Heather Macbeth. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Heather Macbeth
 -/
-import Std.Tactic.SolveByElim
+import Lean.Elab.Tactic.SolveByElim
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Have
 
@@ -119,6 +119,7 @@ theorem lem2 (a : ℤ) {b : ℤ} (hb : b < 0) : abs a < abs b ↔ b < a ∧ a < 
     constructor <;> linarith
 
 open Lean Meta Elab Mathlib Tactic Std.Tactic
+open Lean.Elab.Tactic.SolveByElim Lean.Meta.SolveByElim
 
 register_label_attr decreasing
 
@@ -126,8 +127,8 @@ syntax "apply_decreasing_rules" : tactic
 
 elab_rules : tactic |
     `(tactic| apply_decreasing_rules)  => do
-  let cfg : SolveByElim.Config := { backtracking := false }
-  liftMetaTactic fun g => SolveByElim.solveByElim.processSyntax cfg false false [] [] #[mkIdent `decreasing] [g]
+  let cfg : SolveByElimConfig := { backtracking := false }
+  liftMetaTactic fun g => processSyntax cfg false false [] [] #[mkIdent `decreasing] [g]
 
 macro_rules
 | `(tactic| decreasing_tactic) =>
@@ -144,5 +145,5 @@ macro_rules
       (try simp only [Int.sizeOf_lt_sizeOf_iff, ←sq_lt_sq,  Nat.succ_eq_add_one]);
       nlinarith)
 
-theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b := 
+theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b :=
   Int.fmod_eq_emod _ hb.le ▸ emod_nonneg _ hb.ne'

@@ -119,8 +119,8 @@ def htmlOfTable : List (List (String × Bool)) → String :=
   ++ "</tbody></table>"
 
 def mkTableWidget (t : List (List (String × Bool))) :
-    UserWidgetDefinition where
-  name := "Truth Table"
+    Widget.Module where
+  --name := "Truth Table"
   javascript :=  "
     import * as React from 'react';
     export default function(props) {
@@ -188,6 +188,7 @@ partial def bExprOfPropTerm :
     let null_stx ← `(Json.null)
     let props : Json ← runTermElabM fun _ =>
       Term.evalTerm Json (mkConst ``Json) null_stx
-    saveWidgetInfo decl props stx
+    -- saveWidgetInfo decl props stx
+    -- savePanelWidgetInfo
+    -- TODO -- migrate saveWidgetInfo to savePanelWidgetInfo
   | _ => throwUnsupportedSyntax
-
