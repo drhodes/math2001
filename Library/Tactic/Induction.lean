@@ -5,6 +5,7 @@ Authors: Heather Macbeth
 -/
 import Std.Tactic.SolveByElim
 import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.Have
 
 /-! # Specialized induction tactics
 
