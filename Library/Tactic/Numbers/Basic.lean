@@ -31,7 +31,7 @@ open Parser.Tactic Mathlib.Meta.NormNum
 def Library.Tactic.numbersDischarger (g : MVarId): MetaM (Option (List MVarId)) :=
     Term.TermElabM.run' do
     match ← Tactic.run g <|
-      elabNormNum mkNullNode Syntax.missing (simpOnly := true) (useSimp := false) with
+      elabNormNum mkNullNode mkNullNode Syntax.missing (simpOnly := true) (useSimp := false) with
     | [] => pure (some [])
     | _ => failure;
 
@@ -73,7 +73,7 @@ elab (name := numbers) "numbers" : tactic =>
       <|> throwError "Numbers tactic failed. Maybe the goal is not in scope for the tactic (i.e. the goal is not a pure numeric statement), or maybe the goal is false?"
 
 elab (name := numbersCore) "numbers_core" loc:(location ?) : tactic => do
-  elabNormNum mkNullNode loc (simpOnly := true) (useSimp := false)
+  elabNormNum mkNullNode mkNullNode loc (simpOnly := true) (useSimp := false)
   Tactic.done
 
 @[inherit_doc numbers]
@@ -88,5 +88,5 @@ open Tactic
 
 /-- Elaborator for `numbers` conv tactic. -/
 @[tactic numbersConv] def elabNormNum1Conv : Tactic := fun _ ↦ withMainContext do
-  let ctx ← getSimpContext mkNullNode true
+  let ctx ← getSimpContext mkNullNode mkNullNode true
   Conv.applySimpResult (← deriveSimp ctx (← instantiateMVars (← Conv.getLhs)) (useSimp := false))
