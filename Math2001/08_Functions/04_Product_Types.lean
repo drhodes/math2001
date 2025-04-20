@@ -174,7 +174,7 @@ theorem p_comp_i (x : ℕ × ℕ) : p (i x) = p x + 1 := by
       _ = (A (0 + b) + b) + 1 := by ring
       _ = p (0, b) + 1 := by dsimp [p]
   | (a + 1, b) =>
-    calc p (i (a + 1, b)) = p (a, b + 1) := by rw [i] ; rfl -- FIXME
+    calc p (i (a + 1, b)) = p (a, b + 1) := by rw [i]
       _ = A (a + (b + 1)) + (b + 1) := by dsimp [p]
       _ = (A ((a + 1) + b) + b) + 1 := by ring
       _ = p (a + 1, b) + 1 := by rw [p]
