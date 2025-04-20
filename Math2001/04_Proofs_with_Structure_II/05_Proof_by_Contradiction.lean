@@ -47,7 +47,7 @@ example (n : ℤ) : Int.Even n ↔ ¬ Int.Odd n := by
       _ ≡ 1 [ZMOD 2] := by rel [h2]
     numbers at h -- contradiction!
   · intro h
-    obtain h1 | h2 := Int.even_or_odd' n
+    obtain h1 | h2 := Int.even_or_odd'' n
     · apply h1
     · contradiction
 
