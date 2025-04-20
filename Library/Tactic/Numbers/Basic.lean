@@ -71,7 +71,7 @@ elab (name := numbers) "numbers" : tactic =>
       { maxDepth := 8, discharge := Library.Tactic.numbersDischarger, exfalso := false,
         symm := false  }
     let lemmas := Library.Tactic.numbersProdLemmas.map (liftM <| mkConstWithFreshMVarLevels ·)
-    solveByElim cfg lemmas (ctx := pure []) [g]
+    solveByElim cfg lemmas (ctx := fun _ => pure []) [g]
       <|> throwError "Numbers tactic failed. Maybe the goal is not in scope for the tactic (i.e. the goal is not a pure numeric statement), or maybe the goal is false?"
 
 elab (name := numbersCore) "numbers_core" loc:(location ?) : tactic => do
