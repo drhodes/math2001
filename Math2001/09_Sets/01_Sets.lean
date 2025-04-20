@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Basic
 import Library.Tactic.ModEq
+import Library.Theory.Parity
 
 math2001_init
 
@@ -17,9 +18,9 @@ example : 1 ∈ {n : ℤ | n ≤ 3} := by
 
 
 namespace Nat
-example : 10 ∉ {n : ℕ | Odd n} := by
+example : 10 ∉ {n : ℕ | Nat.Odd n} := by
   dsimp
-  rw [← even_iff_not_odd]
+  rw [← even_iff_not_odd'']
   use 5
   numbers
 end Nat

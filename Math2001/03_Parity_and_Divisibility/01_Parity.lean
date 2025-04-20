@@ -46,12 +46,12 @@ example {n : ℤ} (hn : Int.Even n) : Int.Odd (n ^ 2 + 2 * n - 5) := by
   sorry
 
 example (n : ℤ) : Int.Even (n ^ 2 + n + 4) := by
-  obtain hn | hn := Int.even_or_odd n
+  obtain hn | hn := Int.even_or_odd' n
   · obtain ⟨x, hx⟩ := hn
     use 2 * x ^ 2 + x + 2
     calc
       n ^ 2 + n + 4 = (2 * x) ^ 2 + 2 * x + 4 := by rw [hx]
-      _ = 2 * (2 * x ^ 2 + x + 2) := by ring      
+      _ = 2 * (2 * x ^ 2 + x + 2) := by ring
   · obtain ⟨x, hx⟩ := hn
     use 2 * x ^ 2 + 3 * x + 3
     calc

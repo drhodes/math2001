@@ -19,7 +19,7 @@ open Set Function
 
 example : {n : ℕ | Nat.Even n} ∉ {s : Set ℕ | 3 ∈ s} := by
   dsimp
-  rw [← Nat.odd_iff_not_even]
+  rw [← Nat.odd_iff_not_even'']
   use 1
   numbers
 

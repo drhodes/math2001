@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Theory.ParityModular
+import Library.Theory.Parity
 import Library.Basic
 -- import Library.Tactic.Exhaust
 import Library.Tactic.ModEq
@@ -65,7 +66,7 @@ namespace Int
 example : {n : ℤ | Even n}ᶜ = {n : ℤ | Odd n} := by
   ext n
   dsimp
-  rw [odd_iff_not_even]
+  rw [Int.odd_iff_not_even']
 end Int
 
 
