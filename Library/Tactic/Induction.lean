@@ -82,7 +82,7 @@ macro_rules
 
 @[default_instance] instance : SizeOf ℤ := ⟨Int.natAbs⟩
 
-@[zify_simps] theorem cast_sizeOf (n : ℤ) : (sizeOf n : ℤ) = |n| := n.coe_natAbs
+@[zify_simps] theorem cast_sizeOf (n : ℤ) : (sizeOf n : ℤ) = |n| := n.natCast_natAbs
 
 theorem Int.sizeOf_lt_sizeOf_iff (m n : ℤ) : sizeOf n < sizeOf m ↔ |n| < |m| := by zify
 
