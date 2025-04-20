@@ -43,7 +43,7 @@ such that `norm_num` successfully recognises both `a` and `b` and they are small
   let ra : Result a ← derive a
   let rb : Result b ← derive b
   let rn : Result n ← derive n
-  let i : Q(Ring ℤ) := q(Int.instRingInt)
+  let i : Q(Ring ℤ) := q(Int.instRing)
   let ⟨za, _, _⟩ ← ra.toInt
   let ⟨zb, _, _⟩ ← rb.toInt
   let ⟨zn, _, _⟩ ← rn.toInt i
