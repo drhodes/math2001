@@ -1,7 +1,7 @@
 /- Copyright (c) Joseph Rotella, 2023.  All rights reserved.
 Authors: Joseph Rotella, Ryan Edmonds -/
-import Std.Data.List.Basic
 import Lean
+import Mathlib.Data.List.Indexes
 
 open Lean Widget
 
