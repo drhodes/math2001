@@ -1,5 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
-import Mathlib.Data.Int.Basic
+import Mathlib.Algebra.Group.Int
 import Mathlib.Tactic.LinearCombination
 import Mathlib.Tactic.Linarith
 
