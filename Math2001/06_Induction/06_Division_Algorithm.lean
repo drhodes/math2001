@@ -4,6 +4,8 @@ import Library.Theory.ModEq.Defs
 
 math2001_init
 
+-- TODO:  possibly modify this definition to use the one from Mathlib that uses a match pattern
+-- (follows below)?
 
 def fmod (n d : ℤ) : ℤ :=
   if n * d < 0 then
@@ -15,7 +17,23 @@ def fmod (n d : ℤ) : ℤ :=
   else
     n
 termination_by 2 * n - d
+-- TODO: fix this sorry
+decreasing_by all_goals sorry
 
+-- 4.6.0 current errs: invalid pattern, constructor or constant marked with '[match_pattern]' expected
+-- this is fixed later
+-- TODO, use this one one
+-- def fmod (n d : ℤ) : ℤ :=
+--   match n, d with
+--   | 0,       _       => 0
+--   | ofNat m, ofNat n => ofNat (m % n)
+--   | ofNat (succ m),  -[n+1]  => subNatNat (m % succ n) n
+--   | -[m+1],  ofNat n => subNatNat n (succ (m % n))
+--   | -[m+1],  -[n+1]  => -ofNat (succ m % succ n)
+
+
+-- TODO:  possibly modify this definition to use the one from Mathlib that uses a match pattern
+-- (follows below)?
 def fdiv (n d : ℤ) : ℤ :=
   if n * d < 0 then
     fdiv (n + d) d - 1
@@ -26,7 +44,8 @@ def fdiv (n d : ℤ) : ℤ :=
   else
     0
 termination_by 2 * n - d
-
+-- TODO: fix this sorry
+decreasing_by all_goals sorry
 
 #eval fmod 11 4 -- infoview displays `3`
 #eval fdiv 11 4 -- infoview displays `2`
@@ -52,7 +71,8 @@ theorem fmod_add_fdiv (n d : ℤ) : fmod n d + d * fdiv n d = n := by
   · -- last case
     ring
 termination_by 2 * n - d
-
+-- TODO: fix this sorry
+decreasing_by all_goals sorry
 
 
 theorem fmod_nonneg_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := by
@@ -69,7 +89,8 @@ theorem fmod_nonneg_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := 
   · -- last case
     cancel d at h1
 termination_by 2 * n - d
-
+-- TODO: fix this sorry
+decreasing_by all_goals sorry
 
 theorem fmod_lt_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
   rw [fmod]
@@ -91,7 +112,8 @@ theorem fmod_lt_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
     · addarith [h4]
     · apply h3
 termination_by 2 * n - d
-
+-- TODO: fix this sorry
+decreasing_by all_goals sorry
 
 example (a b : ℤ) (h : 0 < b) : ∃ r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b] := by
   use fmod a b
@@ -117,6 +139,8 @@ def T (n : ℤ) : ℤ :=
   else
     0
 termination_by 3 * n - 1
+-- TODO: fix this sorry
+decreasing_by all_goals sorry
 
 theorem T_eq (n : ℤ) : T n = n ^ 2 := by
   sorry
