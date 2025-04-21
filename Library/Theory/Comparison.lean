@@ -1,5 +1,5 @@
 /- Copyright (c) Mario Carneiro, 2023. -/
-import Mathlib.Init.Data.Int.Order
+import Mathlib.Data.Int.Order.Basic
 import Mathlib.Init.Data.Nat.Lemmas
 
 macro "le_or_succ_le" a:term:arg n:num  : term =>
