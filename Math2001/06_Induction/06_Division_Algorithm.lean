@@ -47,8 +47,11 @@ termination_by 2 * n - d
 -- TODO: fix this sorry
 decreasing_by all_goals sorry
 
-#eval fmod 11 4 -- infoview displays `3`
-#eval fdiv 11 4 -- infoview displays `2`
+
+-- TODO Can't evaluate function that depends on sorry
+-- ucomment these once fmod and fdiv have been unsorried
+-- #eval fmod 11 4 -- infoview displays `3`
+-- #eval fdiv 11 4 -- infoview displays `2`
 
 
 theorem fmod_add_fdiv (n d : ℤ) : fmod n d + d * fdiv n d = n := by
