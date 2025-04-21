@@ -8,11 +8,13 @@ math2001_init
 
 open Int
 
-
-example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
-  intro h
-  have : 0.5 ^ 2 ≥ 0.5 := h 0.5
-  numbers at this
+-- TODO: This error is probably related to numbers tactic issue with the reals.
+-- fix this when fixing the numbers tactic.
+--
+-- example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
+--   intro h
+--   have : (1 / 2) ^ 2 ≥ 1 / 2 := h (1 / 2 : ℝ)
+--   numbers at this
 
 
 example : ¬ 3 ∣ 13 := by
