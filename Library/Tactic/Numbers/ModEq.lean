@@ -2,7 +2,7 @@
 import Library.Theory.ModEq.Defs
 import Mathlib.Tactic.Linarith
 
-open Lean hiding Rat mkRat
+open Lean
 open Meta Qq Mathlib.Meta.NormNum
 
 namespace Mathlib.Meta.NormNum
