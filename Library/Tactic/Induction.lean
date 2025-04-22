@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Heather Macbeth
 -/
 import Lean.Elab.Tactic.SolveByElim
+import Lean.Elab.Tactic.Induction
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Have
 
@@ -44,32 +45,32 @@ def Nat.twoStepLeInduction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u}
 
 open Lean Parser Category Elab Tactic
 
-open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
-syntax (name := BasicInductionSyntax) "simple_induction " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
+open private getElimNameInfo generalizeTargets generalizeVars from Lean.Elab.Tactic.Induction
+syntax (name := BasicInductionSyntax) "simple_induction " (elimTarget,+) (" with " (colGt binderIdent)+)? : tactic
 
 macro_rules
 | `(tactic| simple_induction $tgts,* $[with $withArg*]?) =>
     `(tactic| induction' $tgts,* using Nat.induction $[with $withArg*]? <;>
       push_cast (config := { decide := false }))
 
-open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
-syntax (name := StartingPointInductionSyntax) "induction_from_starting_point " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
+open private getElimNameInfo generalizeTargets generalizeVars from Lean.Elab.Tactic.Induction
+syntax (name := StartingPointInductionSyntax) "induction_from_starting_point " (elimTarget,+) (" with " (colGt binderIdent)+)? : tactic
 
 macro_rules
 | `(tactic| induction_from_starting_point $tgts,* $[with $withArg*]?) =>
     `(tactic| induction' $tgts,* using Nat.le_induction $[with $withArg*]? <;>
       push_cast (config := { decide := false }))
 
-open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
-syntax (name := TwoStepInductionSyntax) "two_step_induction " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
+open private getElimNameInfo generalizeTargets generalizeVars from Lean.Elab.Tactic.Induction
+syntax (name := TwoStepInductionSyntax) "two_step_induction " (elimTarget,+) (" with " (colGt binderIdent)+)? : tactic
 
 macro_rules
 | `(tactic| two_step_induction $tgts,* $[with $withArg*]?) =>
     `(tactic| induction' $tgts,* using Nat.twoStepInduction' $[with $withArg*]? <;>
       push_cast (config := { decide := false }) at *)
 
-open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
-syntax (name := TwoStepStartingPointInductionSyntax) "two_step_induction_from_starting_point " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
+open private getElimNameInfo generalizeTargets generalizeVars from Lean.Elab.Tactic.Induction
+syntax (name := TwoStepStartingPointInductionSyntax) "two_step_induction_from_starting_point " (elimTarget,+) (" with " (colGt binderIdent)+)? : tactic
 
 macro_rules
 | `(tactic| two_step_induction_from_starting_point $tgts,* $[with $withArg*]?) =>
@@ -146,4 +147,4 @@ macro_rules
       nlinarith)
 
 theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b :=
-  Int.fmod_eq_emod _ hb.le ▸ emod_nonneg _ hb.ne'
+  fmod_nonneg' a hb
