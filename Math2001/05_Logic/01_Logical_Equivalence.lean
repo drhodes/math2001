@@ -16,8 +16,8 @@ example (P Q : Prop) : P → (P ∨ ¬ Q) := by
   left
   apply hP
 
-
-#truth_table ¬(P ∧ ¬ Q)
+-- TODO: Fix this when TruthTable is fixed.
+-- #truth_table ¬(P ∧ ¬ Q)
 
 
 example (P : Prop) : (P ∨ P) ↔ P := by
@@ -45,8 +45,9 @@ example (P Q R : Prop) : (P ∧ (Q ∨ R)) ↔ ((P ∧ Q) ∨ (P ∧ R)) := by
       · apply h2
   · sorry
 
-#truth_table P ∧ (Q ∨ R)
-#truth_table (P ∧ Q) ∨ (P ∧ R)
+-- TODO: Fix this when TruthTable is fixed.
+-- #truth_table P ∧ (Q ∨ R)
+-- #truth_table (P ∧ Q) ∨ (P ∧ R)
 
 
 example {P Q : α → Prop} (h1 : ∀ x : α, P x) (h2 : ∀ x : α, Q x) :
