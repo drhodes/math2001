@@ -35,6 +35,7 @@ theorem isInt_ModEq_false : (a b n : ℤ) → decide (0 < n) = true →
 
 end Mathlib.Meta.NormNum
 
+attribute [local instance] Mathlib.Meta.monadLiftOptionMetaM in
 /-- The `norm_num` extension which identifies expressions of the form `a ≡ b [ZMOD n]`,
 such that `norm_num` successfully recognises both `a` and `b` and they are small compared to `n`. -/
 @[norm_num Int.ModEq _ _ _] def evalModEq : NormNumExt where eval (e : Q(Prop)) := do
