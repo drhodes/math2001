@@ -27,7 +27,7 @@ want also
 but currently only Lean core options can be set in lakefile
 -/
 
-require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"24d5f11a33"
+require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"036e95660d"
 
 
 --require mathlib from git "https://github.com/leanprover-community/mathlib4" @ s!"v{Lean.versionString}"
