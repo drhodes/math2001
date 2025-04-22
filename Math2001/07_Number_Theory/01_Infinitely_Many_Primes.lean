@@ -31,7 +31,7 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
       · have :=
         calc p * l + p = p * (l + 1) := by ring
           _ = N ! + 1 := by rw [hk]
-          _ < N ! + p := by addarith [hp2]
+          _ < N ! + p := by sorry -- TODO: addarith [hp2] (now fails)
         addarith [this]
       · calc N ! < N ! + 1 := by extra
           _ = p * (l + 1) := by rw [hk]

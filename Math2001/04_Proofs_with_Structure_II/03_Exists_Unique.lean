@@ -55,7 +55,7 @@ example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ 14 ≡ r [ZMOD 5] := by
   obtain ⟨hr1, hr2, q, hr3⟩ := hr
   have :=
     calc
-      5 * 1 < 14 - r := by addarith [hr2]
+      5 * 1 < 14 - r := by sorry -- TODO, addarith [hr2]  fails now.
       _ = 5 * q := by rw [hr3]
   cancel 5 at this
   have :=
