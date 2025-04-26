@@ -21,8 +21,8 @@ macro (name := extra) "extra" : tactic =>
         (config := { terminal := true, enableSimp := false })
     | fail "out of scope: extra proves relations between a LHS and a RHS differing by some neutral quantity for the relation")
 
-lemma IneqExtra.neg_le_sub_self_of_nonneg [LinearOrderedAddCommGroup G] {a b : G} (h : 0 ≤ a) :
-    -b ≤ a - b := by
+lemma IneqExtra.neg_le_sub_self_of_nonneg [AddCommGroup G] [LinearOrder G] [IsOrderedAddMonoid G]
+    {a b : G} (h : 0 ≤ a) : -b ≤ a - b := by
   rw [sub_eq_add_neg]
   apply le_add_of_nonneg_left h
 

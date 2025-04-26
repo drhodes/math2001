@@ -87,8 +87,8 @@ macro_rules
 
 theorem Int.sizeOf_lt_sizeOf_iff (m n : ℤ) : sizeOf n < sizeOf m ↔ |n| < |m| := by zify
 
-theorem abs_lt_abs_iff {α : Type _} [LinearOrderedAddCommGroup α] (a b : α) :
-    |a| < |b| ↔ (-b < a ∧ a < b) ∨ (b < a ∧ a < -b) := by
+theorem abs_lt_abs_iff {α : Type _} [AddCommGroup α] [LinearOrder α] [IsOrderedAddMonoid α]
+     (a b : α) : |a| < |b| ↔ (-b < a ∧ a < b) ∨ (b < a ∧ a < -b) := by
   simp only [abs, Sup.sup]
   rw [lt_max_iff, max_lt_iff, max_lt_iff]
   apply or_congr
