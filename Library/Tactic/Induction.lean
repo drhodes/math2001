@@ -145,6 +145,3 @@ macro_rules
   `(tactic| simp_wf ;
       (try simp only [Int.sizeOf_lt_sizeOf_iff, ←sq_lt_sq,  Nat.succ_eq_add_one]);
       nlinarith)
-
-theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b :=
-  fmod_nonneg' a hb
